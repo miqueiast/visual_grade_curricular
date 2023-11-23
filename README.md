@@ -12,7 +12,7 @@ Antes de executar o script, certifique-se de ter as bibliotecas necessárias ins
 pip install streamlit pandas plotly
 
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/miqueiast/visual_grade_curricular/
 cd seu-repositorio
 
 
