@@ -3,28 +3,30 @@ import pandas as pd
 
 # Dados fictícios para a grade curricular
 dados_grade_curricular = {
-    'Disciplina': ['Matemática', 'Física', 'Programação', 'Banco de Dados'],
-    'Ementa': ['Ementa de Matemática', 'Ementa de Física', 'Ementa de Programação', 'Ementa de Banco de Dados'],
-    'Pré-requisitos': ['', 'Matemática', 'Matemática', '']
+    'Período': ['1º Período', '2º Período', '3º Período'],
+    'Disciplina': ['Matemática', 'Física', 'Programação'],
+    'Ementa': ['Ementa de Matemática', 'Ementa de Física', 'Ementa de Programação'],
+    'Pré-requisitos': ['', 'Matemática', 'Matemática']
 }
 
 df = pd.DataFrame(dados_grade_curricular)
 
-# Criar uma tabela interativa com Streamlit
+# Criar uma grade curricular
 
-# Seção de seleção de disciplina
-st.title('Grade Curricular')
-disciplina_selecionada = st.selectbox('Selecione uma disciplina:', df['Disciplina'])
+# Criar uma lista de disciplinas para cada período
+periodos = df['Período'].unique()
 
-# Seção de detalhes da disciplina
-if disciplina_selecionada:
-    st.subheader('Detalhes da Disciplina')
-    st.write(f"**Nome da Disciplina:** {disciplina_selecionada}")
-    st.write(f"**Ementa:** {df[df['Disciplina'] == disciplina_selecionada]['Ementa'].values[0]}")
-    st.write(f"**Pré-requisitos:** {df[df['Disciplina'] == disciplina_selecionada]['Pré-requisitos'].values[0]}")
-else:
-    st.warning("Selecione uma disciplina para ver os detalhes.")
+# Criar colunas para cada período
+num_colunas = len(periodos)
+colunas = st.columns(num_colunas)
 
-# Seção da tabela completa
-st.subheader('Tabela Completa')
-st.write(df)
+for i, periodo in enumerate(periodos):
+    disciplinas = df[df['Período'] == periodo]['Disciplina'].tolist()
+
+    # Mostrar informações na coluna correspondente
+    with colunas[i]:
+        st.header(periodo)
+        for disciplina in disciplinas:
+            st.subheader(disciplina)
+            st.text(f"Ementa: {df[df['Disciplina'] == disciplina]['Ementa'].values[0]}")
+            st.text(f"Pré-requisitos: {df[df['Disciplina'] == disciplina]['Pré-requisitos'].values[0]}")
