@@ -1,32 +1,25 @@
 import streamlit as st
 import pandas as pd
 
-# Dados fictícios para a grade curricular
-dados_grade_curricular = {
-    'Período': ['1º Período', '2º Período', '3º Período'],
-    'Disciplina': ['Matemática', 'Física', 'Programação'],
-    'Ementa': ['Ementa de Matemática', 'Ementa de Física', 'Ementa de Programação'],
-    'Pré-requisitos': ['', 'Matemática', 'Matemática']
-}
+# Carregar dados da grade curricular a partir do arquivo Excel
+file_path = 'grade_curricular.xlsx'  # Substitua pelo caminho real do seu arquivo
+df = pd.read_excel(file_path)
 
-df = pd.DataFrame(dados_grade_curricular)
-
-# Criar uma grade curricular
-
-# Criar uma lista de disciplinas para cada período
+# Criar uma lista de períodos para a grade curricular
 periodos = df['Período'].unique()
 
-# Criar colunas para cada período
-num_colunas = len(periodos)
-colunas = st.columns(num_colunas)
+# Criar botões de seleção de período
+selected_period = st.radio("Selecione o Período", periodos)
 
-for i, periodo in enumerate(periodos):
-    disciplinas = df[df['Período'] == periodo]['Disciplina'].tolist()
+# Filtrar disciplinas do período selecionado
+disciplinas_periodo = df[df['Período'] == selected_period]
 
-    # Mostrar informações na coluna correspondente
-    with colunas[i]:
-        st.header(periodo)
-        for disciplina in disciplinas:
-            st.subheader(disciplina)
-            st.text(f"Ementa: {df[df['Disciplina'] == disciplina]['Ementa'].values[0]}")
-            st.text(f"Pré-requisitos: {df[df['Disciplina'] == disciplina]['Pré-requisitos'].values[0]}")
+# Mostrar informações na coluna correspondente
+st.header(selected_period)
+for index, row in disciplinas_periodo.iterrows():
+    st.subheader(row['Nome'])
+    st.markdown(f"Código: {row['Código']}")
+    st.markdown(f"Carga Horária: {row['Carga Horária']} horas")
+    st.markdown(f"Pré-requisito: {row['Pré-requisito']}")
+    st.markdown(f"Ementa: {row['Ementa']}")
+    st.markdown(f"Bibliografia: {row['Bibliografia']}")
