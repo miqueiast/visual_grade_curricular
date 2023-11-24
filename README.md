@@ -1,5 +1,13 @@
 # visual_grade_curricular
 Trabalho para o Seminário da Disciplina de Visualização de Dados Aplicada
+Criado pelos alunos do segundo período do Curso do Bacharelado em Estatística da UFPR:
+
+- Bruno Kazuo
+- Gislayne Bueno
+- Lucas Shizuno
+- Miqueias Teixeira
+- Raymundo 
+
 # Grade Curricular Interativa com Streamlit
 
 Este projeto oferece uma aplicação interativa para visualizar uma grade curricular usando Python e a biblioteca Streamlit. A interface permite a seleção de disciplinas, exibindo detalhes como ementa e pré-requisitos. Além disso, inclui uma trilha visual para facilitar a compreensão das relações entre as disciplinas.
