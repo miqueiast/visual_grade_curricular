@@ -60,12 +60,12 @@ selected_period = st.radio("Selecione o Período", periodos)
 # Filtrar disciplinas do período selecionado
 disciplinas_periodo = df[df['Período'] == selected_period]
 
-# Mostrar informações na coluna correspondente
-st.header(selected_period)
-for index, row in disciplinas_periodo.iterrows():
-    st.subheader(row['Nome'])
-    st.markdown(f"Código: {row['Código']}")
-    st.markdown(f"Carga Horária: {row['Carga Horária']} horas")
-    st.markdown(f"Pré-requisito: {row['Pré-requisito']}")
-    st.markdown(f"Ementa: {row['Ementa']}")
-    st.markdown(f"Bibliografia: {row['Bibliografia']}")
+# Mostrar informações em um expander
+with st.expander(selected_period):
+    for index, row in disciplinas_periodo.iterrows():
+        st.subheader(row['Nome'])
+        st.markdown(f"Código: {row['Código']}")
+        st.markdown(f"Carga Horária: {row['Carga Horária']} horas")
+        st.markdown(f"Pré-requisito: {row['Pré-requisito']}")
+        st.markdown(f"Ementa: {row['Ementa']}")
+        st.markdown(f"Bibliografia: {row['Bibliografia']}")
