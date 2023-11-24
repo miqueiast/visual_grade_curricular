@@ -8,7 +8,7 @@ Criado pelos alunos do segundo período do Curso do Bacharelado em Estatística 
 - Miqueias Teixeira
 - Raymundo 
 
-# Grade Curricular Interativa com Streamlit
+# Grade Currícular Interativa com Streamlit
 
 Este projeto oferece uma aplicação interativa para visualizar uma grade curricular usando Python e a biblioteca Streamlit. A interface permite a seleção de disciplinas, exibindo detalhes como ementa e pré-requisitos. Além disso, inclui uma trilha visual para facilitar a compreensão das relações entre as disciplinas.
 
