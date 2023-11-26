@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .period {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .disciplines {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .discipline {
+            border: none;
+            color: white;
+            padding: 12px 14px;
+            font-size: 12px;
+            cursor: pointer;
+            width: 400px;
+            margin-bottom: 0px;
+            margin-top: 5px;
+        }
+
+        .details {
+            display: none;
+            background-color: #555;
+            padding: 10px;
+            color: white;
+        }
+
+        .ce {
+            background-color: DodgerBlue;
+        }
+
+        .ci {
+            background-color: DarkGreen;
+        }
+
+        .cm {
+            background-color: DarkOrange;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover, .discipline:hover {
+            background-color: RoyalBlue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="period">
+        <button class="btn" onclick="toggleDisciplines('period1')">1º Período</button>
+        <ul class="disciplines" id="period1">
+            <li class="discipline ce" onclick="toggleDetails('details1')">CE300 - Estatística e Sociedade</li>
+            <div class="details" id="details1">
+                Aqui vai o texto para CE300 - Estatística e Sociedade.
+            </div>
+            <li class="discipline ce" onclick="toggleDetails('details2')">CE301 - Estatística Básica</li>
+            <div class="details" id="details2">
+                Aqui vai o texto para CE301 - Estatística Básica.
+            </div>
+            <li class="discipline ci" onclick="toggleDetails('details3')">CI240 - Fundamentos de Programação</li>
+            <div class="details" id="details3">
+                Aqui vai o texto para CI240 - Fundamentos de Programação.
+            </div>
+            <li class="discipline cm" onclick="toggleDetails('details4')">CM310 - Pré-Cálculo</li>
+            <div class="details" id="details4">
+                Aqui vai o texto para CM310 - Pré-Cálculo.
+            </div>
+        </ul>
+    </div>
+
+    <div class="period">
+        <button class="btn" onclick="toggleDisciplines('period2')">2º Período</button>
+        <ul class="disciplines" id="period2">
+            <!-- Adicione disciplinas e detalhes aqui, seguindo o mesmo padrão -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleDisciplines(periodId) {
+        // Removido o trecho que exibia ou ocultava as disciplinas
+    }
+
+    function toggleDetails(detailsId) {
+        var details = document.getElementById(detailsId);
+        details.style.display = (details.style.display === 'none') ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>
