@@ -28,9 +28,9 @@ df_bad = df_credit[df_credit["Risk"] == 'bad']
 
 filtered_df = df_credit[(df_credit['Age'] >= age_range[0]) & (df_credit['Age'] <= age_range[1])]
 
-fig = px.histogram(filtered_df, x='Age', histnorm='probability', title=f'Age Distribution for Age Range: {age_range[0]}-{age_range[1]}')
-fig.update_layout(bargap=0.05)
-st.plotly_chart(fig)
+fig_age_distribution = px.histogram(filtered_df, x='Age', histnorm='probability', title=f'Age Distribution for Age Range: {age_range[0]}-{age_range[1]}')
+fig_age_distribution.update_layout(bargap=0.05)
+st.plotly_chart(fig_age_distribution)
 
 # Visualização de contagens de algumas variáveis categóricas
 st.header('Categorical Features Count')
@@ -61,78 +61,116 @@ st.pyplot(fig_corr)
 # Adicionando o gráfico de violino
 st.header('Housing vs. Credit Amount (Violin Plot)')
 
-fig_violin = go.Figure()
+fig_violin_housing = go.Figure()
 
-fig_violin.add_trace(go.Violin(
-    x=df_good['Housing'],
-    y=df_good['Credit amount'],
-    legendgroup='Good Credit',
+fig_violin_housing.add_trace(go.Violin(
+    x=filtered_df['Housing'],
+    y=filtered_df['Credit amount'],
+    legendgroup='Housing',
     scalegroup='No',
-    name='Good Credit',
-    side='negative',
+    name='Housing',
+    side='positive',
     box_visible=True,
     meanline_visible=True,
-    line_color='blue'
+    line_color='orange'
 ))
 
-fig_violin.add_trace(go.Violin(
-    x=df_bad['Housing'],
-    y=df_bad['Credit amount'],
-    legendgroup='Bad Credit',
+fig_violin_housing.update_layout(
+    yaxis=dict(zeroline=False),
+    violingap=0,
+    violinmode='overlay'
+)
+
+st.plotly_chart(fig_violin_housing)
+
+# Adicionando o gráfico de violino para Job
+st.header('Job vs. Credit Amount (Violin Plot)')
+
+fig_violin_job = go.Figure()
+
+fig_violin_job.add_trace(go.Violin(
+    x=filtered_df['Job'],
+    y=filtered_df['Credit amount'],
+    legendgroup='Job',
     scalegroup='No',
-    name='Bad Credit',
+    name='Job',
+    side='positive',
+    box_visible=True,
+    meanline_visible=True,
+    line_color='purple'
+))
+
+fig_violin_job.update_layout(
+    yaxis=dict(zeroline=False),
+    violingap=0,
+    violinmode='overlay'
+)
+
+st.plotly_chart(fig_violin_job)
+
+# Adicionando o gráfico de violino para Saving accounts
+st.header('Saving Accounts vs. Credit Amount (Violin Plot)')
+
+fig_violin_saving_accounts = go.Figure()
+
+fig_violin_saving_accounts.add_trace(go.Violin(
+    x=filtered_df['Saving accounts'],
+    y=filtered_df['Credit amount'],
+    legendgroup='Saving Accounts',
+    scalegroup='No',
+    name='Saving Accounts',
     side='positive',
     box_visible=True,
     meanline_visible=True,
     line_color='green'
 ))
 
-fig_violin.update_layout(
+fig_violin_saving_accounts.update_layout(
     yaxis=dict(zeroline=False),
     violingap=0,
     violinmode='overlay'
 )
 
-st.plotly_chart(fig_violin)
+st.plotly_chart(fig_violin_saving_accounts)
 
 # First plot
 trace0 = go.Bar(
-    x=df_credit[df_credit["Risk"] == 'good']["Sex"].value_counts().index.values,
-    y=df_credit[df_credit["Risk"] == 'good']["Sex"].value_counts().values,
+    x=filtered_df[filtered_df["Risk"] == 'good']["Sex"].value_counts().index.values,
+    y=filtered_df[filtered_df["Risk"] == 'good']["Sex"].value_counts().values,
     name='Good credit'
 )
 
 # First plot 2
 trace1 = go.Bar(
-    x=df_credit[df_credit["Risk"] == 'bad']["Sex"].value_counts().index.values,
-    y=df_credit[df_credit["Risk"] == 'bad']["Sex"].value_counts().values,
+    x=filtered_df[filtered_df["Risk"] == 'bad']["Sex"].value_counts().index.values,
+    y=filtered_df[filtered_df["Risk"] == 'bad']["Sex"].value_counts().values,
     name="Bad Credit"
 )
 
 # Second plot
 trace2 = go.Box(
-    x=df_credit[df_credit["Risk"] == 'good']["Sex"],
-    y=df_credit[df_credit["Risk"] == 'good']["Credit amount"],
+    x=filtered_df[filtered_df["Risk"] == 'good']["Sex"],
+    y=filtered_df[filtered_df["Risk"] == 'good']["Credit amount"],
     name=trace0.name
 )
 
 # Second plot 2
 trace3 = go.Box(
-    x=df_credit[df_credit["Risk"] == 'bad']["Sex"],
-    y=df_credit[df_credit["Risk"] == 'bad']["Credit amount"],
+    x=filtered_df[filtered_df["Risk"] == 'bad']["Sex"],
+    y=filtered_df[filtered_df["Risk"] == 'bad']["Credit amount"],
     name=trace1.name
 )
 
 data = [trace0, trace1, trace2, trace3]
 
-fig = make_subplots(rows=1, cols=2,
-                    subplot_titles=('Sex Count', 'Credit Amount by Sex'))
+fig_sex_distribution = make_subplots(rows=1, cols=2,
+                                     subplot_titles=('Sex Count', 'Credit Amount by Sex'))
 
-fig.add_trace(trace0, 1, 1)
-fig.add_trace(trace1, 1, 1)
-fig.add_trace(trace2, 1, 2)
-fig.add_trace(trace3, 1, 2)
+fig_sex_distribution.add_trace(trace0, 1, 1)
+fig_sex_distribution.add_trace(trace1, 1, 1)
+fig_sex_distribution.add_trace(trace2, 1, 2)
+fig_sex_distribution.add_trace(trace3, 1, 2)
 
-fig.update_layout(height=400, width=800, title='Sex Distribution', boxmode='group')
+fig_sex_distribution.update_layout(height=400, width=800, title='Sex Distribution', boxmode='group')
 
-st.plotly_chart(fig)
+st.plotly_chart(fig_sex_distribution)
