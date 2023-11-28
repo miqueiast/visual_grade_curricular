@@ -1,8 +1,10 @@
+# Agora, você pode continuar com o resto do seu código Streamlit
 import streamlit as st
 import pandas as pd
 
 # Carregamento dos dados
-df = pd.read_excel('grade_curricular.xlsx')
+df = pd.read_excel('grade_curricular.xlsx', engine='openpyxl')
+
 
 # Mapear Código para Nome para facilitar a busca de pré-requisitos
 codigo_para_nome = dict(zip(df['Código'], df['Nome']))
