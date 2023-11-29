@@ -57,10 +57,21 @@ st.header('Contagem de Características Categóricas')
 
 fig_contagens, axes_contagens = plt.subplots(2, 2, figsize=(12, 10))
 
+# Countplot para Sexo
 sns.countplot(x='Sexo', data=df_filtrado, hue='Risco', palette='Set1', ax=axes_contagens[0, 0])
+axes_contagens[0, 0].set_xticklabels(axes_contagens[0, 0].get_xticklabels(), rotation=45, ha="right")
+
+# Countplot para Moradia
 sns.countplot(x='Moradia', data=df_filtrado, hue='Risco', palette='Set2', ax=axes_contagens[0, 1])
+axes_contagens[0, 1].set_xticklabels(axes_contagens[0, 1].get_xticklabels(), rotation=45, ha="right")
+
+# Countplot para Profissao
 sns.countplot(x='Profissao', data=df_filtrado, hue='Risco', palette='Set3', ax=axes_contagens[1, 0])
+axes_contagens[1, 0].set_xticklabels(axes_contagens[1, 0].get_xticklabels(), rotation=45, ha="right")
+
+# Countplot para Conta_Poupanca
 sns.countplot(x='Conta_Poupanca', data=df_filtrado, hue='Risco', palette='Set1', ax=axes_contagens[1, 1])
+axes_contagens[1, 1].set_xticklabels(axes_contagens[1, 1].get_xticklabels(), rotation=45, ha="right")
 
 plt.tight_layout()
 plt.subplots_adjust(top=0.9)
