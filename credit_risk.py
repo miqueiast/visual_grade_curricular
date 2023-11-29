@@ -8,7 +8,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # Carregando os dados
-df_credit = pd.read_csv("german_credit_data.csv", index_col=0)
+url = "https://raw.githubusercontent.com/miqueiast/visual_grade_curricular/main/german_credit_data.csv"
+df_credit = pd.read_csv(url, index_col=0)
+
 
 # Configurando a página do Streamlit
 st.set_page_config(page_title='Análise de Crédito Alemã', layout='wide')
