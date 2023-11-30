@@ -1,10 +1,12 @@
-# Agora, você pode continuar com o resto do seu código Streamlit
 import streamlit as st
 import pandas as pd
+import io
+import requests
 
-# Carregamento dos dados
-df = pd.read_excel('grade_curricular.xlsx', engine='openpyxl')
-
+# Carregamento dos dados do link
+url = 'https://github.com/miqueiast/visual_grade_curricular/raw/main/grade_curricular.xlsx'
+response = requests.get(url)
+df = pd.read_excel(io.BytesIO(response.content), engine='openpyxl')
 
 # Mapear Código para Nome para facilitar a busca de pré-requisitos
 codigo_para_nome = dict(zip(df['Código'], df['Nome']))
@@ -49,6 +51,9 @@ script = """
 # Adicionar o script JavaScript ao Streamlit
 st.markdown(script, unsafe_allow_html=True)
 
+# Defina uma paleta de cores para os períodos
+cores_por_periodo = {'1': 'LightBlue', '2': 'LightGreen', '3': 'LightSalmon', '4': 'LightPink', '5': 'LightGoldenRodYellow'}
+
 # Criar uma seção para cada Período
 for periodo in sorted(periodos):
     with container:
@@ -58,8 +63,9 @@ for periodo in sorted(periodos):
             # Calcular a altura dinamicamente baseada na quantidade de disciplinas
             altura_botao = 10 + len(df[df['Período'] == periodo]) * 60  # Ajuste conforme necessário
             # Definir width e margin-top para o botão do Período
+            cor_background = cores_por_periodo.get(str(periodo), 'LightGrey')
             st.markdown(
-                f'<button class="period-button" style="height: {altura_botao}px; width: 100px; margin-top: 5px;">{periodo}</button>',
+                f'<button class="period-button" style="height: {altura_botao}px; width: 100px; margin-top: 5px; background-color: {cor_background};">{periodo}</button>',
                 unsafe_allow_html=True
             )
         
