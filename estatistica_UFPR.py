@@ -72,7 +72,7 @@ df['Requisito'] = df['Código'].apply(
 periodos = df['Período'].unique()
 
 # Configurar o layout da página
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_icon=None, page_title=None, initial_sidebar_state="auto")
 
 # Criar duas colunas para posicionar as imagens lado a lado
 col1, col2 = st.columns(2)
