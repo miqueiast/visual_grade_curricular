@@ -83,9 +83,6 @@ col1.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho
 # Adicionar espaçamento entre as colunas usando st.markdown
 col1.markdown("&nbsp;", unsafe_allow_html=True)
 
-# Adicionar a segunda imagem na segunda coluna
-col2.image("personalgithubpage.png", width=200)  # Substitua pelo caminho da sua segunda imagem e ajuste a largura conforme necessário
-
 # Adicionar um título
 st.title("Visualização da Grade Curricular")
 
