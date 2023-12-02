@@ -81,7 +81,7 @@ st.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho d
 st.title("Visualização da Grade Curricular")
 
 # Adicionar um parágrafo com quebra de linha
-st.markdown("**Aceitamos contribuições!** *Sinta-se à vontade para contribuir para este projeto.*" 
+st.markdown("**Aceitamos contribuições!**" "*Sinta-se à vontade para contribuir para este projeto.*" 
             
 """Trabalho iniciado pelos alunos Bruno Kazuo, Gislayne Bueno, Lucas Shizuno, Miqueias Teixeira e Raymundo do segundo período do curso de Estatística e Ciência de Dados da UFPR.
 
