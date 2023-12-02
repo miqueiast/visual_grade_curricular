@@ -80,13 +80,16 @@ st.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho d
 # Adicionar um título
 st.title("Visualização da Grade Curricular")
 
-# Adicionar um parágrafo com quebra de linha
-st.markdown("**Aceitamos contribuições!**" "*Sinta-se à vontade para contribuir para este projeto.*" 
-            
-"""Trabalho iniciado pelos alunos Bruno Kazuo, Gislayne Bueno, Lucas Shizuno, Miqueias Teixeira e Raymundo do segundo período do curso de Estatística e Ciência de Dados da UFPR.
+# Adicionar um subtítulo
+st.markdown("**Aceitamos contribuições!** *Sinta-se à vontade para contribuir para este projeto.*")
 
-O trabalho está disponível para toda a nossa comunidade acadêmica, para contribuições, melhorias, para servir como ferramenta para os alunos e futuros alunos da instituição.
-""")
+# Adicionar um parágrafo com quebra de linha
+st.markdown(
+    """
+    Trabalho iniciado pelos alunos Bruno Kazuo, Gislayne Bueno, Lucas Shizuno, Miqueias Teixeira e Raymundo do segundo período do curso de Estatística e Ciência de Dados da UFPR.  
+    O trabalho está disponível para toda a nossa comunidade acadêmica, para contribuições, melhorias, para servir como ferramenta para os alunos e futuros alunos da instituição.
+    """
+)
 
 # Criar um contêiner para os períodos
 container = st.container()
