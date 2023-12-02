@@ -26,7 +26,7 @@ def adicionar_info_pre_requisitos(row, codigo_para_nome, codigo_para_periodo, co
         st.write(f"Carga Horária: {row['Carga Horária']}")
         pre_requisitos_msg = obter_mensagem_requisitos(row['Pré-requisito'], codigo_para_nome, codigo_para_periodo)
         st.write(pre_requisitos_msg)
-        requisitos_msg = obter_mensagem_requisitos(row['Requisito'], codigo_para_nome, codigo_para_periodo)
+        requisitos_msg = obter_mensagem_requisitos(row['Pré-Requisito'], codigo_para_nome, codigo_para_periodo)
         st.write(requisitos_msg)
         st.write(f"Ementa: {row['Ementa']}")
         st.write(f"Bibliografia: {row['Bibliografia']}")
