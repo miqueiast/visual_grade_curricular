@@ -62,7 +62,7 @@ codigo_para_nome = mapear_codigo_para_nome(df)
 codigo_para_periodo = dict(zip(df['Código'], df['Período']))
 
 # Adicionar coluna 'Requisito' ao DataFrame
-df['Requisito'] = ''
+df['Pré-Requisito'] = ''
 
 # Preencher a coluna 'Requisito' com base nas informações de pré-requisito
 df['Requisito'] = df['Código'].apply(
