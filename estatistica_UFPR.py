@@ -75,7 +75,7 @@ periodos = df['Período'].unique()
 st.set_page_config(layout="wide", page_icon=None, page_title=None, initial_sidebar_state="auto")
 
 # Adicionar a primeira imagem na primeira coluna
-col1.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho da sua primeira imagem e ajuste a largura conforme necessário
+st.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho da sua primeira imagem e ajuste a largura conforme necessário
 
 # Adicionar um título
 st.title("Visualização da Grade Curricular")
