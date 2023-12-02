@@ -80,9 +80,6 @@ st.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho d
 # Adicionar um título
 st.title("Visualização da Grade Curricular")
 
-# Adicionar um subtítulo
-st.markdown("**Aceitamos contribuições!** *Sinta-se à vontade para contribuir para este projeto.*")
-
 # Adicionar um parágrafo com quebra de linha
 st.markdown("**Aceitamos contribuições!** *Sinta-se à vontade para contribuir para este projeto.*" 
             
