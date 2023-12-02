@@ -35,7 +35,7 @@ def adicionar_info_pre_requisitos(row, codigo_para_nome, codigo_para_periodo, co
 # Função para obter mensagem de pré-requisitos ou requisitos
 def obter_mensagem_requisitos(requisitos, codigo_para_nome, codigo_para_periodo):
     requisitos_nomes = obter_nomes_e_periodos(requisitos, codigo_para_nome, codigo_para_periodo)
-    return "Pré-Requisito: " + "\n".join(requisitos_nomes) if requisitos_nomes else "Requisito: Nenhum"
+    return "Requisito: " + "\n".join(requisitos_nomes) if requisitos_nomes else "Pré-Requisito: Nenhum"
 
 
 # Função para obter nomes e períodos a partir de códigos
