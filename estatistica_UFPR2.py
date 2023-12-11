@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
+import requests
+from io import BytesIO
+
+# URL do arquivo Excel
+url = 'https://github.com/miqueiast/visual_grade_curricular/raw/main/grade_curricular.xlsx'
 
 # Carregamento dos dados
-df = pd.read_excel('grade_curricular.xlsx')
+response = requests.get(url)
+df = pd.read_excel(BytesIO(response.content))
 
 # Mapear Código para Nome para facilitar a busca de pré-requisitos
 codigo_para_nome = dict(zip(df['Código'], df['Nome']))
@@ -22,10 +28,24 @@ for index, row in df.iterrows():
 periodos = df['Período'].unique()
 
 # Configurar o layout da página
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_icon=None, page_title=None, initial_sidebar_state="auto")
+
+# Adicionar a primeira imagem na primeira coluna
+st.image("estatisticacienciadedados.png", width=720)  # Substitua pelo caminho da sua primeira imagem e ajuste a largura conforme necessário
 
 # Adicionar um título
-st.title("Visualização de Grade Curricular")
+st.title("Visualização da Grade Curricular")
+
+# Adicionar um subtítulo
+st.markdown("**Aceitamos contribuições!** *Sinta-se à vontade para contribuir para este projeto.*")
+
+# Adicionar um parágrafo com quebra de linha
+st.markdown(
+    """
+    Trabalho iniciado pelos alunos Bruno Kazuo, Gislayne Bueno, Lucas Shizuno, Miqueias Teixeira e Raymundo do segundo período do curso de Estatística e Ciência de Dados da UFPR.  
+    O trabalho está disponível para toda a nossa comunidade acadêmica, para contribuições, melhorias, para servir como ferramenta para os alunos e futuros alunos da instituição.
+    """
+)
 
 # Criar um contêiner para os períodos
 container = st.container()
